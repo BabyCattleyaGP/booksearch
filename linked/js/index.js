@@ -16,12 +16,9 @@
     var sparqlCamera = new Sparql(datasets.camera, $http);
 
     $scope.results = [];
-
-    $scope.wanted = '';
-
+    
     $scope.clean = function(){
       $scope.results = [];
-      $scope.wanted = '';
       $scope.progress = '';
     };
 
