@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta class="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Bookabuku | Search</title>
+
+	<link rel="stylesheet" href='theme/css/style.min.css' />
+	<link rel="stylesheet" type="text/css" href="css/emerald.css" />
+	<link rel="stylesheet" type="text/css" href="theme/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="theme/css/bootstrap-grid.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="icon" type="image/png" size="20x20" href="book.png" />
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/emerald.js"></script>
+	<script src="js/script.js"></script>
+
+	<script>
+		$(document).ready(function() {
+		$('#bta').click(function() {
+			$('html, body').animate({
+			scrollTop: 0 // $("#sdl").offset().top
+			}, 1000);
+		});
+		});
+	</script>
+
+</head>
+<body ng-app="bookApp" ng-controller="masterCtrl">
+	<!-- navbar -->
+	<div class="navbar navbar--extended">
+		<nav class="nav__mobile"></nav>
+		<div class="container">
+			<div class="navbar__inner">
+				<a href="./index.html" class="navbar__logo">Bookabuku</a>
+				<nav class="navbar__menu">
+					<ul>
+						<li><a href="./index.html">Home</a></li>
+						<li><a href="./auth.html">Logout</a></li>
+					</ul>
+				</nav>
+				<div class="navbar__menu-mob"><a href="" id='toggle'><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg></a></div>
+			</div>
+		</div>
+	</div>
+	<!-- Hero unit -->
+	<div class="page__header">
+		<div class="hero__overlay hero__overlay--gradient"></div>
+		<div class="hero__mask"></div>
+		<div class="page__header__inner">
+			<div class="container">
+				<div class="page__header__content">
+					<div class="page__header__content__inner" id='navConverter'>
+						<h1 class="page__header__title">Bookabuku - Google Books</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<img id="bta" class="transition" title="back To Top" src="up-arrow.png" />
+
+	<!-- Message Popup -->
+	<div id="msg-popup-container" class="transition">
+	  <div id="msg-popup" class="transition ghost">
+		Book Added To Saved!
+	  </div>
+	</div>
+  
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Book Modal</h4>
+		  </div>
+		  <div class="modal-body">
+			<div id="{{ current_book.id }}" data-etag="{{ current_book.etag }}" class="row">
+			  <div class="col-xs-4">
+				<img class="book-img" src="{{ current_book.volumeInfo.imageLinks.thumbnail }}" />
+			  </div>
+			  <div class="col-xs-8">
+				<h4>
+				<strong>
+				  <a title="{{ current_book.volumeInfo.title }}" href="{{ current_book.volumeInfo.canonicalVolumeLink }}">
+					{{ current_book.volumeInfo.title }}
+				  </a>
+				</strong>
+			  </h4>
+				<p><strong>By</strong>: <em>{{ current_book.volumeInfo.authors[0] }}</em></p>
+				<p>{{ current_book.volumeInfo.description }}</p>
+				<br/>
+				<p><strong>Published</strong>: {{ current_book.volumeInfo.publishedDate }}</p>
+				<p><strong>Maturity Rating</strong>: {{ current_book.volumeInfo.maturityRating }}</p>
+				<p><strong>Buy</strong>: <a title="Buy Link" href="{{  current_book.saleInfo.buyLink }}">{{  current_book.saleInfo.buyLink }}</a></p>
+  
+			  </div>
+			</div>
+		  </div>
+		</div>
+  
+	  </div>
+	</div>
+  
+	<!--  -->
+
+	<!-- Page content -->
+	<div class="page">
+			<div class="container">
+				<div class="page__inner">
+					<div class="page__menu">
+						<div class="container-fluid" style="padding-top: 15px;">
+							<div class="row">
+									<div class="box">
+										<div id="search-box">
+										<h3 class="text-center">Search For Books</h3>
+										<input type="text" class="middlr transition max-w" placeholder="Title or category" ng-model="query" />
+										<br/>
+										<p class="text-center"><a class="button button__accent" ng-click="searchBooks()">Submit</a></p>
+										<p class="text-center"><a class="button button__primary" ng-click="clearResults()">Clear Results</a></p>
+										<br>
+										<p class="text-center" id="msg"></p>
+										</div>
+							
+										<div id="loading-box" style="display: none;">
+										<img class="middlr" src="Loading_icon.gif" width="175px" />
+									</div>
+									</div>
+		
+								<div class="box">
+									<div id="books-box">
+									<h3 class="text-center">Saved Books</h3>
+									<p class="text-center">{{ my_books.length }}</p>
+									<hr/>
+									<ul id="mybooks-list">
+										<li ng-repeat="book in my_books">
+										<div title="Show This Book's Info" id="{{ book.id }}" data-etag="{{ book.etag }}" class="row transition" ng-click="showBook(this.book)">
+											<div class="col-md-12">
+											<img class="book-img-2" src="{{ book.volumeInfo.imageLinks.thumbnail }}" />
+											</div>
+											<div class="col-md-12">
+											<h4>
+												<strong>
+													<a title="{{ book.volumeInfo.title }}" href="{{ book.volumeInfo.canonicalVolumeLink }}">
+													{{ book.volumeInfo.title }}
+													</a>
+												</strong>
+												</h4>
+											<p class="text-left"><a class="button button__primary" ng-click="removeBook(this.book)">Remove</a></p>
+											</div>
+										</div>
+										<hr/>
+										</li>
+										</ul>
+									</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				
+				<div class="page__main">
+					<div class="text-container">
+					<div class="box">
+						<div id="results-box">
+						<h3 class="text-center">Results</h3>
+						<p class="text-center" id="query"></p>
+						<hr/>
+						<ul id="results-list">
+							<li ng-repeat="book in results_books">
+							<div id="{{ book.id }}" data-etag="{{ book.etag }}" class="row">
+								<div class="col-md-4">
+								<img class="book-img" src="{{ book.volumeInfo.imageLinks.thumbnail }}" />
+								</div>
+								<div class="col-md-8">
+								<h4>
+									<strong>
+										<a title="{{ book.volumeInfo.title }}" href="{{ book.volumeInfo.canonicalVolumeLink }}">
+										{{ book.volumeInfo.title }}
+										</a>
+									</strong>
+									</h4>
+								<p><strong>By</strong>: <em>{{ book.volumeInfo.authors[0] }}</em></p>
+								<p>{{ book.volumeInfo.description }}</p>
+								<br/>
+								<p><strong>Published</strong>: {{ book.volumeInfo.publishedDate }}</p>
+								<p><strong>Maturity Rating</strong>: {{ book.volumeInfo.maturityRating }}</p>
+								<p><strong>Buy</strong>: <a title="Buy Link" href="{{  book.saleInfo.buyLink }}">{{  book.saleInfo.buyLink }}</a></p>
+								<br/>
+								<p class="text-left"><a class="button button__accent" ng-click="addBook(this.book)">Add To Saved</a></p>
+								</div>
+							</div>
+							<hr/>
+							</li>
+						</ul>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src='theme/js/app.min.js'></script>
+</body>
+</html>
