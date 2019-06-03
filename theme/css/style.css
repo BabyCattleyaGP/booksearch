@@ -417,7 +417,7 @@ a {
   color: inherit; }
 
 .link {
-  color: #6C63FF;
+  color: #FFA92D;
   text-decoration: underline; }
   @media (min-width: 992px) {
     .link:hover {
@@ -427,8 +427,8 @@ button, .button {
   display: inline-block;
   padding: 6pt 20pt;
   line-height: 1.7;
-  border: 1px solid #6C63FF;
-  color: #6C63FF;
+  border: 1px solid #FFA92D;
+  color: #FFA92D;
   font-weight: 400;
   transition: 0.7s;
   white-space: nowrap;
@@ -447,8 +447,8 @@ button, .button {
       color: #463aff; } }
 
 .button__primary {
-  background-color: #6C63FF;
-  border-color: #6C63FF;
+  background-color: #FFA92D;
+  border-color: #FFA92D;
   color: #fff; }
   @media (min-width: 992px) {
     .button__primary:hover {
@@ -773,8 +773,8 @@ select {
 
 [type="radio"]:checked + label:after {
   border-radius: 50%;
-  border: 1px solid #6C63FF;
-  background-color: #6C63FF;
+  border: 1px solid #FFA92D;
+  background-color: #FFA92D;
   z-index: 0;
   transform: scale(1.02); }
 
@@ -861,7 +861,7 @@ select {
   position: fixed;
   z-index: 100;
   width: 100%;
-  background-color: #6C63FF;
+  background-color: #FFA92D;
   transition: 0.7s; }
   .navbar--nofixed {
     position: relative;
@@ -999,13 +999,13 @@ select {
   width: 100%;
   opacity: 0.96;
   z-index: 1;
-  background-color: #6C63FF; }
+  background-color: #FFA92D; }
 
 .hero__overlay--gradient {
-  background: linear-gradient(to right, #6C63FF, #4641FF); }
+  background: linear-gradient(to right, #FFA92D, #4641FF); }
 
 .hero__overlay--gradientVertical {
-  background: linear-gradient(to bottom, #6C63FF, #4641FF); }
+  background: linear-gradient(to bottom, #FFA92D, #4641FF); }
 
 .hero__mask {
   position: absolute;
@@ -1068,7 +1068,7 @@ select {
   cursor: pointer; }
   @media (min-width: 992px) {
     .hero__sub__down:hover {
-      color: #6C63FF; } }
+      color: #FFA92D; } }
 
 #scrollToNext {
   transition: 0.7s; }
@@ -1181,16 +1181,16 @@ select {
   max-width: 60ch; }
 
 .cta {
-  background: linear-gradient(to right, #6C63FF, #4641FF);
+  background: linear-gradient(to right, #FFA92D, #4641FF);
   color: #fff;
   padding: 48pt 0;
   text-align: center; }
 
 .cta--reverse {
-  background: linear-gradient(to left, #6C63FF, #4641FF); }
+  background: linear-gradient(to left, #FFA92D, #4641FF); }
 
 .cta--plain {
-  background: #6C63FF; }
+  background: #FFA92D; }
 
 .cta--secondary {
   background: #4641FF; }
@@ -1223,7 +1223,7 @@ select {
   padding-right: 16pt;
   display: block;
   cursor: pointer;
-  color: #6C63FF;
+  color: #FFA92D;
   font-size: 1.225rem;
   min-width: 33%;
   margin-bottom: 1.5rem; }
@@ -1255,8 +1255,8 @@ select {
   margin-bottom: 8pt; }
 
 .footer__link {
-  color: #6C63FF;
-  border-bottom: 1px dotted #6C63FF;
+  color: #FFA92D;
+  border-bottom: 1px dotted #FFA92D;
   padding-bottom: 1pt;
   transition: 0.7s; }
   @media (min-width: 992px) {
@@ -1482,11 +1482,11 @@ select {
         opacity: 0.85; }
         .vMenu a:hover {
           opacity: 1;
-          color: #6C63FF; }
+          color: #FFA92D; }
         .vMenu a:after {
           display: block;
           content: '';
-          border-bottom: 1px solid #6C63FF;
+          border-bottom: 1px solid #FFA92D;
           transform: scaleX(0);
           transition: transform 250ms ease-in-out; }
         .vMenu a:hover:after {
@@ -1504,17 +1504,17 @@ select {
       margin-right: 0.5em; }
 
 .vMenu--active {
-  color: #6C63FF; }
+  color: #FFA92D; }
   .vMenu--active:before {
     content: "\2014";
     margin-right: 0.333em; }
   @media (min-width: 992px) {
     .vMenu--active {
       opacity: 1;
-      color: #6C63FF; }
+      color: #FFA92D; }
       .vMenu--active:after {
         display: block;
         content: '';
-        border-bottom: 1px solid #6C63FF;
+        border-bottom: 1px solid #FFA92D;
         transform: none;
         transition: none; } }
