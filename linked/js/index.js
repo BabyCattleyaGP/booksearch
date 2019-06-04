@@ -1,9 +1,9 @@
 
   'use scrict';
 
-  var romajsODApp = angular.module('romajsODApp', []);
+  var booksearch = angular.module('booksearch', []);
 
-  romajsODApp.controller("opendata", function($scope, $http){
+  booksearch.controller("opendata", function($scope, $http){
 
     var datasets = {
       book: {
