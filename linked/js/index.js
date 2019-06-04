@@ -6,14 +6,14 @@
   romajsODApp.controller("opendata", function($scope, $http){
 
     var datasets = {
-      camera: {
+      book: {
         url: 'http://localhost:3030/book',
         format: 'json',
         limit: '100'
       }
     };
 
-    var sparqlCamera = new Sparql(datasets.camera, $http);
+    var sparqlBook = new Sparql(datasets.book, $http);
 
     $scope.results = [];
 
@@ -36,7 +36,7 @@
               '} '+
               'LIMIT 25';
 
-      sparqlCamera.search(q, function(response){
+      sparqlBook.search(q, function(response){
 
           if (response.results.bindings.length===0){
             $scope.progress = 'No results';
