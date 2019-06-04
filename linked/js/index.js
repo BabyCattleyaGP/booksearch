@@ -7,7 +7,7 @@
 
     var datasets = {
       camera: {
-        url: 'http://localhost:3030/harry',
+        url: 'http://localhost:3030/book',
         format: 'json',
         limit: '100'
       }

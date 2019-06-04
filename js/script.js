@@ -40,30 +40,6 @@ App.controller('masterCtrl', ['$scope', function($scope) {
     $scope.query = '';
   }
 
-  $scope.addBook = function(book){
-    if($scope.my_books.indexOf(book) != -1) {
-      alert("You already saved this book.");
-      return;
-    }
-    $scope.my_books.push(book);
-    $("#msg-popup").removeClass("ghost");
-    $("#msg-popup-container").css("z-index", "10");
-    setTimeout(function(){
-      $("#msg-popup").addClass("ghost");
-      $("#msg-popup-container").css("z-index", "0");
-    }, 3000);
-  }
-
-  $scope.removeBook = function(book){
-    var index = $scope.my_books.indexOf(book);
-    $scope.my_books.splice(index, 1);
-  }
-
-  $scope.showBook = function(book) {
-    $scope.current_book = book;
-    $("#myModal").modal("show");
-  }
-
   $scope.clearResults = function() {
     $scope.results_books = [];
     $("#query").text( "" );
